@@ -45,8 +45,9 @@ RUN set -x \
 #COPY /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
 #COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
 #COPY --from=base /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
-COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-0.13.0-SNAPSHOT.war
+#COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-0.13.0-SNAPSHOT.war
 
+COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
 
 
 RUN set -x \
