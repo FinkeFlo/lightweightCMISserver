@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:8-alpine as build
 MAINTAINER JLL "lelan-j@mgdis.fr"
 
 # TOMCAT 
