@@ -41,7 +41,9 @@ RUN set -x \
     && mkdir -p /data/log
 
 #ADD target/*.war /tmp/lightweightcmis-${VERSION}.war
-COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
+#COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
+COPY /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
+
 
 RUN set -x \
 	&& mkdir ${TOMCAT_BASE}/webapps/lightweightcmis \
