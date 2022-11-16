@@ -26,7 +26,10 @@ RUN set -x \
   && rm -rf /var/cache/apk/*
 
 # Configuration
-ADD tomcat-users.xml /opt/tomcat/conf/
+#ADD tomcat-users.xml /opt/tomcat/conf/
+RUN set -x cd /opt/tomcat/conf/
+RUN set -x wget https://github.com/FinkeFlo/lightweightCMISserver/blob/portainer/tomcat-users.xml
+
 
 # Set environment
 ENV TOMCAT_BASE /opt/tomcat
@@ -47,9 +50,10 @@ RUN set -x \
 #COPY --from=base /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
 #COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-0.13.0-SNAPSHOT.war
 
+RUN set -x cd /tmp/
 RUN set -x curl -LO https://github.com/FinkeFlo/lightweightCMISserver/blob/master/sample.war
 
-COPY *.war /tmp/lightweightcmis-${VERSION}.war
+#COPY *.war /tmp/lightweightcmis-${VERSION}.war
 
 
 RUN set -x \
@@ -62,7 +66,9 @@ RUN set -x \
 
 # Launch Tomcat on startup
 
-COPY docker-entrypoint.sh /
+RUN set -x cd /
+RUN set -x wget https://github.com/FinkeFlo/lightweightCMISserver/blob/portainer/docker-entrypoint.sh
+#COPY docker-entrypoint.sh /
 
 RUN chmod 755 /docker-entrypoint.sh
 
