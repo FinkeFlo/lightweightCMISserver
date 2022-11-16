@@ -47,7 +47,7 @@ RUN set -x \
 #COPY --from=base /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-${VERSION}.war
 #COPY --from=build /srv/ciagent/workspace/target/*.war /tmp/lightweightcmis-0.13.0-SNAPSHOT.war
 
-curl -LO https://github.com/FinkeFlo/lightweightCMISserver/blob/master/sample.war
+RUN set -x curl -LO https://github.com/FinkeFlo/lightweightCMISserver/blob/master/sample.war
 
 COPY *.war /tmp/lightweightcmis-${VERSION}.war
 
